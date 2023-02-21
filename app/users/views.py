@@ -11,7 +11,7 @@ from django.utils import timezone
 
 
 def index(request):
-    albums = Album.objects.all().order_by('-pub_date')
+    albums = Album.objects.order_by('-pub_date').distinct()
 
     latest_albums = albums
     
