@@ -142,10 +142,11 @@ def create_message(request, pk):
             message.recipient = recipient
 
             if sender:
-                message.name = sender.first_name
+                message.name = sender.name
                 message.email = sender.email
 
             message.save()
+            messages.info(request, "Message sent successfully...")
             return redirect('index')
 
     return render(request, 'users/message_form.html', {'form': form})
