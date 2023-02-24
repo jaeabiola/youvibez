@@ -28,6 +28,8 @@ RUN adduser --disabled-password --no-create-home app && \
     chmod -R 755 /vol && \
     chmod -R +x /scripts
 
+COPY ./app/static/media/ /vol/web/static/
+
 USER app
 
 CMD [ "run.sh" ]

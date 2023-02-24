@@ -88,15 +88,18 @@
                 {% for album in albums %}
                 <div class="col-12 col-sm-4 col-md-3 col-lg-2 single-album-item t c p">
                     <div class="single-album">
+                        <a href="{% url 'song' album.id %}">
                         <div class="img-container">
+                            
                         <img src="{{album.imageURL}}" alt="">
                         </div>
                         <div class="album-info">
-                            <a href="{% url 'song' album.id %}">
+                           
                                 <h5>{{album.owner.user.username}}</h5>
-                            </a>
+                            
                             <p>{{album.album_title}}</p>
                         </div>
+                        </a>
                     </div>
                 </div>
                 {% endfor %}

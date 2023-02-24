@@ -77,7 +77,7 @@ def register(request):
                 messages.success(request, 'Successfully registered...')
                 user_login = auth.authenticate(email=email, password=password)
                 auth.login(request, user_login)
-                return redirect('index')
+                return redirect('profile-edit')
         else:
             messages.error(request, 'Password not matching...')
             return redirect('register')

@@ -52,3 +52,10 @@ def event(request):
 
     context = {'events': events}
     return render(request, 'core/event.html', context)
+
+def delete_song(request, pk):
+    song = Song.objects.get(id=pk)
+    if request.method == 'POST':
+        song.delete()
+        return redirect('song', pk=song.album.id)
+    return render(request, 'delete.html', {'obj': song})

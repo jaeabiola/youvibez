@@ -30,14 +30,17 @@
                                     <audio preload="auto" controls>
                                         <source src="{% if song.mp3 %} {{song.mp3.url}} {% endif %}">
                                     </audio>
-                                    <small class="d-flex justify-content-end"><i>{{song.description}}</i></small>
+                                    <div>
+                                         <small class="d-flex justify-content-between"><a href="{% url 'delete-song' song.id %}"><i>&#xF5DE;</i></a><span><i>{{song.description}}</i></span></small>
+
+                                    </div>
                                 </div>
                             </div>
                           
                             {% endfor %}
 
                     </div>
-                   
+                   {% if request.user.id == album.owner.id %}
                     <div class="col-lg-6 p-5">
                         <form action="" method="post" id="post-form" enctype="multipart/form-data">
                             {% csrf_token %}
@@ -45,6 +48,7 @@
                             <input type="submit" value="Add Song" class="btn oneMusic-btn mb-4">
                         </form>
                     </div>
+                    {% endif %}
             
         </div>
     </div>

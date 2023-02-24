@@ -8,8 +8,10 @@
                 <nav class="classy-navbar justify-content-between" id="oneMusicNav">
 
                     <!-- Nav brand -->
+                    <div>
                     <a href="{% url 'index' %}" class="nav-brand"><b>You V!bez</b></a>
-
+                    <p class="mx-5 text-info">{{request.user.username}}</p>
+                    </div>
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
