@@ -14,12 +14,12 @@ RUN python -m venv /py && \
     apk del .tem-deps
 
 COPY ./app /app
+COPY ./app/static/media/ /vol/web/static/
 COPY ./scripts /scripts
 
 WORKDIR /app
 EXPOSE 8000
 
-ENV PATH="/scripts:/py/bin:$PATH"
 
 RUN adduser --disabled-password --no-create-home app && \
     mkdir -p /vol/web/static && \
@@ -28,7 +28,8 @@ RUN adduser --disabled-password --no-create-home app && \
     chmod -R 755 /vol && \
     chmod -R +x /scripts
 
-COPY ./app/static/media/ /vol/web/static/
+
+ENV PATH="/scripts:/py/bin:$PATH"
 
 USER app
 
